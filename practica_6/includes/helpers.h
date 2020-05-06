@@ -1,6 +1,10 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+#include <cassert>
+#include <iostream>
+#include <string>
+
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -31,5 +35,6 @@ string getMACAddress(string binary);
 string getIPv6Address(string binary);
 int open_file(char * str);
 int getFileSize(int fd);
+string readPackage(char * fileName);
 
 #endif

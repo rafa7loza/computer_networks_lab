@@ -1,10 +1,5 @@
 #include <iostream>
 #include <string>
-// #include <unistd.h>
-// #include <fcntl.h>
-// #include <stdlib.h>
-// #include <sys/types.h>
-// #include <sys/stat.h>
 
 #include "helpers.h"
 #include "IPv6.h"
@@ -14,7 +9,6 @@
 using namespace std;
 
 void setField(IPv6 *obj,  string field, string block, int &position, int bits);
-string readPackage(char * fileName);
 
 int main(){
 
@@ -23,8 +17,6 @@ int main(){
 
   cout << "\n\tReading datagram from: " << fileName << endl << endl;
   string datagram = readPackage(fileName);
-
-  // cout << datagram << endl;
 
   Header header = Header(datagram, &position);
   header.showData();
@@ -57,21 +49,4 @@ int main(){
 void setField(IPv6 *obj,  string field, string block, int &position, int bits){
   obj->initField(field, block.substr(position, bits));
   position += bits;
-}
-
-string readPackage(char * fileName){
-  int fileDescription, fsize, i;
-  unsigned char * bfr;
-  string datagram;
-
-  fileDescription = open_file(fileName);
-  fsize = getFileSize(fileDescription);
-  bfr = new unsigned char[fsize];
-  read(fileDescription, bfr, fsize);
-  close(fileDescription);
-
-  for(i=0; i<fsize; ++i)
-    datagram += decToBin(bfr[i]);
-
-  return datagram;
 }

@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-#include <math.h>
-
 #include "helpers.h"
 
 using namespace std;
@@ -119,4 +115,22 @@ int getFileSize(int fd){
   int size = lseek(fd, 0, SEEK_END) - lseek(fd, 0, SEEK_SET);
   lseek(fd, currentPosition, SEEK_SET);
   return size;
+}
+
+string readPackage(char * fileName){
+  int fileDescription, fsize, i;
+  unsigned char * bfr;
+  string datagram;
+
+  fileDescription = open_file(fileName);
+  fsize = getFileSize(fileDescription);
+  assert(fsize > 0);
+  bfr = new unsigned char[fsize];
+  read(fileDescription, bfr, fsize);
+  close(fileDescription);
+
+  for(i=0; i<fsize; ++i)
+    datagram += decToBin(bfr[i]);
+
+  return datagram;
 }
