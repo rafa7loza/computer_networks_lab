@@ -1,6 +1,13 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+// #include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
 #define BITS_3 3
 #define BITS_4 4
 #define BITS_13 13
@@ -22,10 +29,18 @@
 #define PROTOCOL_ADDR_RECEIVER "protocolAddressReceiver"
 #define PROTOCOL_ADDR_SENDER "protocolAddressSender"
 
+// Protocol codes
+
 #define ARP_CODE "0806"
 #define RARP_CODE "8035"
 #define IPV4_CODE "0800"
 #define IPV6_CODE "86DD"
+
+// Header Fields
+
+#define ADDRESS_SENDER "address sender"
+#define ADDRESS_RECEIVER "address receiver"
+#define HEADER_CODE "header code"
 
 // IPv6 Fields
 
@@ -50,12 +65,14 @@
 
 using namespace std;
 
-string hexToString(int num);
-string binToString(int num);
+string decToHex(int num);
+string decToBin(int num);
+string binToHex(string binary);
 int binToDec(string binary);
 string getIpAddress(string binary);
 string getMACAddress(string binary);
 string getIPv6Address(string binary);
-
+int open_file(char * str);
+int getFileSize(int fd);
 
 #endif

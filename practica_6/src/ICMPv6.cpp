@@ -98,7 +98,7 @@ string getHexadecimal(string binary){
 
   for(int k=0; k<sz; k += BITS_4){
     string block = binary.substr(k, BITS_4);
-    result += hexToString(binToDec(block))[1];
+    result += decToHex(binToDec(block))[1];
     if((k+BITS_4)%16 == 0 && k+BITS_4<sz) result += '-';
   }
 
