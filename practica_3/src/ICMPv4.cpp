@@ -38,16 +38,12 @@ void ICMPv4::initField(string field, string representation){
   }else if(field == ICMPV4_CODE){
     this->errorCode = binToDec(representation);
   }else if(field == ICMPV4_CHECKSUM){
-    int aux;
     for(int i=0; i<BYTES_2; i+=BYTE){
-      aux = binToDec(representation.substr(i, BYTE));
-      this->checksum += hexToString(aux);
+      this->checksum += binToHex(representation.substr(i, BYTE));
     }
   }else if(field == ICMPV4_OTHER){
-    int aux;
     for(int i=0; i<representation.length(); i+=BYTE){
-      aux = binToDec(representation.substr(i, BYTE));
-      this->otherFields += hexToString(aux) + '-';
+      this->otherFields += binToHex(representation.substr(i, BYTE)) + '-';
     }
     this->otherFields[this->otherFields.length()-1] = '\0';
   }

@@ -93,11 +93,11 @@ void IPv4_datagram::initField(string field, string representation){
       case 139: { this->protocol = "HIP"; break;}
     }
   }else if(field == CHECKSUM_HEADER){
-    this->checksumHeader = hexToString(binToDec(representation));
+    this->checksumHeader = binToHex(representation);
   }else if(field == ADDRESS_ORIGIN){
-    this->originAddress = getAddress(representation);
+    this->originAddress = getIpAddress(representation);
   }else if(field == ADDRESS_DEST){
-    this->objectiveAddress = getAddress(representation);
+    this->objectiveAddress = getIpAddress(representation);
   }else if(field == ICMP){
     this->icmpv4 = ICMPv4(representation);
   }

@@ -45,7 +45,7 @@ int main(){
     while(file.get(ch)){
       number = ch;
       if(number < 0) number += 256;
-      if(byte >= 14) datagram += binToString(number);
+      if(byte >= 14) datagram += decToBin(number);
 
 
       if(byte == 0)
@@ -54,17 +54,17 @@ int main(){
       cout << "\nDireccion de origen: ";
       else if(byte == 12){
         cout << "\nTipo: ";
-        type += hexToString(number);
+        type += decToHex(number);
       }else if(byte == 14){
         cout << "\nDatos: ";
       }
 
-      cout << hexToString(number);
+      cout << decToHex(number);
 
       if(byte != 5 && byte != 11 && byte != 13 && byte != fileSize-1) cout << "-";
 
       if(byte == 13){
-        type += hexToString(number);
+        type += decToHex(number);
 
         if(type == "0800") cout << ": IPv4";
         else if(type == "0806") cout << ": ARP";

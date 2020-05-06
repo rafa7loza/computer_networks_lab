@@ -18,11 +18,18 @@
 #define BYTES_6 48
 #define BYTES_16 128
 
+#define debug(s) cout << " ** Debug: " << s << " **" << endl;
+
 using namespace std;
 
-string hexToString(int num);
-string binToString(int num);
+string decToHex(int num);
+string decToBin(int num);
+string binToHex(string binary);
 int binToDec(string binary);
-string getAddress(string binary);
+string getIpAddress(string binary);
+string getMACAddress(string binary);
+string getIPv6Address(string binary);
+int open_file(char * str);
+int getFileSize(int fd);
 
 #endif
