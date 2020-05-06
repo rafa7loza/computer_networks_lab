@@ -1,6 +1,12 @@
 #ifndef ICMPV4_H
 #define ICMPV4_H
 
+// ICMPv4 Protocol
+#define ICMPV4_TYPE "icmpv4_type"
+#define ICMPV4_CODE "icmpv4_code"
+#define ICMPV4_CHECKSUM "icmpv4_checksum"
+#define ICMPV4_OTHER "icmpv4_other"
+
 using namespace std;
 
 class ICMPv4{
