@@ -3,6 +3,16 @@
 
 #include "ICMPv6.h"
 
+// IPv6 Fields
+#define IPV6_VERSION "version"
+#define IPV6_CLASS "traffic class"
+#define IPV6_FLOW_LABEL "flow label"
+#define IPV6_PAYLOAD_LEN "payload length"
+#define IPV6_NEXT_HEADER "next header"
+#define IPV6_HOP_LIMIT "hop limit"
+#define IPV6_SOURCE_ADDRESS "source address"
+#define IPV6_DESTINATION_ADDRESS "destination address"
+
 using namespace std;
 
 struct TrafficClass{

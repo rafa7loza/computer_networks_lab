@@ -3,6 +3,13 @@
 
 using namespace std;
 
+// ICMPv6 Fields
+#define ICMPV6_TYPE "icmpv6 data"
+#define ICMPV6_CODE "icmpv6 code"
+#define ICMPV6_CHECKSUM "icmpv6 checksum"
+#define ICMPV6_OTHER "icmpv6 other"
+#define ICMPV6 "ICMPv6"
+
 class ICMPv6{
 
 public:
