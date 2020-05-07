@@ -1,5 +1,5 @@
-#ifndef IPV4_DATAGRAM_H
-#define IPV4_DATAGRAM_H
+#ifndef IPV4_H
+#define IPV4_H
 
 #include "ICMPv4.h"
 
@@ -27,7 +27,7 @@ struct service{
   string reliavility;
 };
 
-class IPv4_datagram{
+class IPv4{
 private:
   string version;
   int headerLength;
@@ -42,9 +42,10 @@ private:
   string originAddress;
   string objectiveAddress;
   ICMPv4 icmpv4;
+  void setField(string &data, string field, int * fpos);
 public:
-  IPv4_datagram();
-  void initField(string field, string representation);
+  IPv4();
+  IPv4(string &data, int *fposition);
   void showData();
   string getProtocol();
 };

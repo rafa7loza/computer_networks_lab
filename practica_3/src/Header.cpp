@@ -23,11 +23,6 @@ void Header::setField(string &data, string field, int * fposition){
     *fposition += BYTES_6;
     this->addressReceiver = getMACAddress(block);
   }else if(field == HEADER_CODE){
-    // string code = binToHex(data.substr(*fposition, BYTE))+binToHex(data.substr(*fposition+BYTE, BYTE));
-    // if(code == "0800") this->type = "IPv4";
-    // else if(code == "0806") this->type = "ARP";
-    // else if(code == "8035") this->type = "RARP";
-    // else if(code == "86DD") this->type = "IPv6";
     this->type = binToHex(data.substr(*fposition, BYTE))+binToHex(data.substr(*fposition+BYTE, BYTE));
     *fposition += BYTES_2;
   }
