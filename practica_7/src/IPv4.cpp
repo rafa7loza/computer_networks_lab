@@ -23,7 +23,7 @@ IPv4::IPv4(string &data, int *fposition){
   setField(data, CHECKSUM_HEADER, fposition);
   setField(data, ADDRESS_ORIGIN, fposition);
   setField(data, ADDRESS_DEST, fposition);
-  setField(data, ICMP, fposition);
+  setField(data, PAYLOAD, fposition);
 
 }
 
@@ -142,9 +142,12 @@ void IPv4::setField(string &data, string field, int * fpos){
     representation = data.substr(*fpos, BYTES_4);
     *fpos += BYTES_4;
     this->objectiveAddress = getIpAddress(representation);
-  }else if(field == ICMP){
+  }else if(field == PAYLOAD){
     representation = data.substr(*fpos);
-    this->icmpv4 = ICMPv4(representation);
+    if(this->protocol == ICMP)
+      this->ptr = new ICMPv4(representation);
+      // this->icmpv4 = new ICMPv4(representation);
+
   }
 
 }
@@ -167,7 +170,10 @@ void IPv4::showData(){
     << "Direccion IP de origen: " << this->originAddress << endl
     << "Direccion IP de destino: " << this->objectiveAddress << endl
     << endl;
-    this->icmpv4.showData();
+    if(this->protocol == ICMP)
+      static_cast<ICMPv4*>(this->ptr)->showData();
+
+
 }
 
 string IPv4::getProtocol(){

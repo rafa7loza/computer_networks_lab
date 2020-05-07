@@ -17,6 +17,7 @@
 #define ADDRESS_ORIGIN "addr_o"
 #define ADDRESS_DEST "addr_d"
 #define ICMP "ICMPv4"
+#define PAYLOAD "payload"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ struct service{
 
 class IPv4{
 private:
+  // Attributes
   string version;
   int headerLength;
   service serviceType;
@@ -41,8 +43,12 @@ private:
   string checksumHeader;
   string originAddress;
   string objectiveAddress;
-  ICMPv4 icmpv4;
+  string payloadType;
+  void * ptr;
+
+  // Methods
   void setField(string &data, string field, int * fpos);
+
 public:
   IPv4();
   IPv4(string &data, int *fposition);
