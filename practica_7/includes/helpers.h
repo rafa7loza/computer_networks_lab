@@ -14,6 +14,7 @@
 
 #define BITS_3 3
 #define BITS_4 4
+#define BITS_9 9
 #define BITS_13 13
 #define BITS_20 20
 #define BYTE 8

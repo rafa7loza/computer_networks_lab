@@ -1,7 +1,12 @@
 #ifndef IPV4_H
 #define IPV4_H
 
+#include <iostream>
+#include <string>
+
 #include "ICMPv4.h"
+#include "TCP.h"
+#include "helpers.h"
 
 // IPv4 Protocol
 #define VERSION "version"
@@ -16,8 +21,11 @@
 #define CHECKSUM_HEADER "chksm_header"
 #define ADDRESS_ORIGIN "addr_o"
 #define ADDRESS_DEST "addr_d"
-#define ICMP "ICMPv4"
 #define PAYLOAD "payload"
+
+// Segment types
+#define ICMP_TYPE "ICMPv4"
+#define TCP_TYPE "TCP"
 
 using namespace std;
 
@@ -44,7 +52,7 @@ private:
   string originAddress;
   string objectiveAddress;
   string payloadType;
-  void * ptr;
+  void * ptr = nullptr;
 
   // Methods
   void setField(string &data, string field, int * fpos);

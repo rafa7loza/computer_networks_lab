@@ -1,11 +1,4 @@
-#include <iostream>
-#include <string>
-
 #include "IPv4.h"
-#include "ICMPv4.h"
-#include "helpers.h"
-
-using namespace std;
 
 IPv4::IPv4(){}
 
@@ -144,10 +137,10 @@ void IPv4::setField(string &data, string field, int * fpos){
     this->objectiveAddress = getIpAddress(representation);
   }else if(field == PAYLOAD){
     representation = data.substr(*fpos);
-    if(this->protocol == ICMP)
+    if(this->protocol == ICMP_TYPE)
       this->ptr = new ICMPv4(representation);
-      // this->icmpv4 = new ICMPv4(representation);
-
+    else if(this->protocol == TCP_TYPE)
+      this->ptr = new TCP(representation);
   }
 
 }
@@ -170,8 +163,13 @@ void IPv4::showData(){
     << "Direccion IP de origen: " << this->originAddress << endl
     << "Direccion IP de destino: " << this->objectiveAddress << endl
     << endl;
-    if(this->protocol == ICMP)
+    assert(this->ptr != nullptr);
+    if(this->protocol == ICMP_TYPE)
       static_cast<ICMPv4*>(this->ptr)->showData();
+    else if(this->protocol == TCP_TYPE)
+      static_cast<TCP*>(this->ptr)->showData();
+
+
 
 
 }

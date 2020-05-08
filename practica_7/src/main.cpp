@@ -7,12 +7,10 @@
 
 using namespace std;
 
-// void setField(IPv4 *obj,  string field, string block, int &position, int bits);
-
 int main(){
 
   int position = 0;
-  char fileName[] = "ethernet_ipv4_icmp_redirect.bin";
+  char fileName[] = "ethernet_ipv4_tcp_irc.bin";
 
   cout << "\n\tReading datagram from: " << fileName << endl << endl;
   string datagram = readPackage(fileName);
@@ -30,8 +28,3 @@ int main(){
   return 0;
 
 }
-
-// void setField(IPv4 *obj,  string field, string block, int &position, int bits){
-//   obj->initField(field, block.substr(position, bits));
-//   position += bits;
-// }
