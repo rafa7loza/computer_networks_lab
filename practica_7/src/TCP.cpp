@@ -4,8 +4,8 @@ TCP::TCP(){}
 
 TCP::TCP(string &data){
   this->fposition = 0;
-  setField(data, ORIGIN_PORT, &fposition);
-  setField(data, DESTINATION_PORT, &fposition);
+  setField(data, ORIGIN_PORT_TCP, &fposition);
+  setField(data, DESTINATION_PORT_TCP, &fposition);
   setField(data, SEQ_NUM, &fposition);
   setField(data, ACK, &fposition);
   setField(data, HEADER_LENGTH_TCP, &fposition);
@@ -19,11 +19,11 @@ TCP::TCP(string &data){
 
 void TCP::setField(string &data, string field, int *fpos){
   string representation;
-  if(field == ORIGIN_PORT){
+  if(field == ORIGIN_PORT_TCP){
     representation = data.substr(*fpos, BYTES_2);
     *fpos += BYTES_2;
     this->originPort = binToDec(representation);
-  }else if(field == DESTINATION_PORT){
+  }else if(field == DESTINATION_PORT_TCP){
     representation = data.substr(*fpos, BYTES_2);
     *fpos += BYTES_2;
     this->destinationPort = binToDec(representation);
@@ -63,7 +63,7 @@ void TCP::setField(string &data, string field, int *fpos){
     this->urgentPointer = binToDec(representation);
   }else if(field == OTHER_CONTENT){
     representation = data.substr(*fpos);
-    this->otherContent = binToHex(representation);
+    this->otherContent = representation;
   }
 }
 
@@ -91,6 +91,10 @@ void TCP::showData(){
       << "Tamaño de la ventana: " << this->wlength << endl
       << "Suma de verificicación: " << this->checksum << endl
       << "Puntero urgente: " << this->urgentPointer << endl
-      << "Resto de la inforación: { " << this->otherContent << "}" << endl
-      << endl;
+      << "Datos: \n [ ";
+      for(int i=0; i<this->otherContent.length(); i += BYTE){
+        if(i%BYTE == 0 && i != 0) cout << "-";
+        cout << binToHex(this->otherContent.substr(i, BYTE));
+      }
+      cout << " ]\n\n";
 }

@@ -3,8 +3,8 @@
 
 #include "helpers.h"
 
-#define ORIGIN_PORT "origin port"
-#define DESTINATION_PORT "destination port"
+#define ORIGIN_PORT_TCP "origin port tcp"
+#define DESTINATION_PORT_TCP "destination port tcp"
 #define SEQ_NUM "sequence number"
 #define ACK "acuse de recibo"
 #define HEADER_LENGTH_TCP "tam cabecera tcp"

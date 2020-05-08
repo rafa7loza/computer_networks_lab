@@ -46,9 +46,9 @@ void UDP::showData(){
   << "Tamaño total: " << this->length << endl
   << "Suma de comprobación: " << this->checksum << endl
   << "Datos: \n [ ";
-  for(int i=0; i<this->otherData.length(); ++i){
-    if(i%2 == 0 && i != 0) cout << "-";
-    cout << this->otherData.substr(i, 2);
+  for(int i=0; i<this->otherData.length(); i += BYTE){
+    if(i%BYTE == 0 && i != 0) cout << "-";
+    cout << binToHex(this->otherData.substr(i, BYTE));
   }
   cout << " ]\n\n";
 }

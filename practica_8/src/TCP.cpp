@@ -63,7 +63,7 @@ void TCP::setField(string &data, string field, int *fpos){
     this->urgentPointer = binToDec(representation);
   }else if(field == OTHER_CONTENT){
     representation = data.substr(*fpos);
-    this->otherContent = binToHex(representation);
+    this->otherContent = representation;
   }
 }
 
@@ -91,6 +91,10 @@ void TCP::showData(){
       << "Tamaño de la ventana: " << this->wlength << endl
       << "Suma de verificicación: " << this->checksum << endl
       << "Puntero urgente: " << this->urgentPointer << endl
-      << "Resto de la inforación: { " << this->otherContent << "}" << endl
-      << endl;
+      << "Datos: \n [ ";
+      for(int i=0; i<this->otherContent.length(); i += BYTE){
+        if(i%BYTE == 0 && i != 0) cout << "-";
+        cout << binToHex(this->otherContent.substr(i, BYTE));
+      }
+      cout << " ]\n\n";
 }
