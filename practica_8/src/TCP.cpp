@@ -91,7 +91,7 @@ void TCP::showData(){
       << "Tamaño de la ventana: " << this->wlength << endl
       << "Suma de verificicación: " << this->checksum << endl
       << "Puntero urgente: " << this->urgentPointer << endl
-      << "Datos: \n [ ";
+      << "Datos:\n[ ";
       for(int i=0; i<this->otherContent.length(); i += BYTE){
         if(i%BYTE == 0 && i != 0) cout << "-";
         cout << binToHex(this->otherContent.substr(i, BYTE));
