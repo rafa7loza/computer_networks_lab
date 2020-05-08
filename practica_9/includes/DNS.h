@@ -3,7 +3,7 @@
 
 #include "helpers.h"
 
-#define ONE '1'
+#define ZERO '0'
 
 #define ID_DNS "id dns"
 #define FLAGS_DNS "flags dns"
@@ -22,7 +22,9 @@ struct Flags{
   bool tc;      // 1 bit
   bool rd;      // 1 bit
   bool ra;      // 1 bit
-  string z;     // 3 bits
+  bool z;     // 1 bits
+  bool ad;     // 1 bits
+  bool cd;     // 1 bits
   int rCode;    // 4 bits
 };
 
