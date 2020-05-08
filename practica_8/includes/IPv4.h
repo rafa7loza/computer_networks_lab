@@ -4,9 +4,10 @@
 #include <iostream>
 #include <string>
 
+#include "helpers.h"
 #include "ICMPv4.h"
 #include "TCP.h"
-#include "helpers.h"
+#include "UDP.h"
 
 // IPv4 Protocol
 #define VERSION "version"
@@ -26,6 +27,7 @@
 // Segment types
 #define ICMP_TYPE "ICMPv4"
 #define TCP_TYPE "TCP"
+#define UDP_TYPE "UDP"
 
 using namespace std;
 

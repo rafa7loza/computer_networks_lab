@@ -141,6 +141,8 @@ void IPv4::setField(string &data, string field, int * fpos){
       this->ptr = new ICMPv4(representation);
     else if(this->protocol == TCP_TYPE)
       this->ptr = new TCP(representation);
+    else if(this->protocol == UDP_TYPE)
+      this->ptr = new UDP(representation);
   }
 
 }
@@ -168,9 +170,8 @@ void IPv4::showData(){
       static_cast<ICMPv4*>(this->ptr)->showData();
     else if(this->protocol == TCP_TYPE)
       static_cast<TCP*>(this->ptr)->showData();
-
-
-
+    else if(this->protocol == UDP_TYPE)
+    static_cast<UDP*>(this->ptr)->showData();
 
 }
 

@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 
   int position = 0;
-  char fileName[] = "ethernet_ipv4_tcp_irc.bin";
+  char fileName[] = "ethernet_ipv4_udp_dns.bin";
 
   cout << "\n\tReading datagram from: " << fileName << endl << endl;
   string datagram = readPackage(fileName);

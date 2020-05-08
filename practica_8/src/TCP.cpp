@@ -4,8 +4,8 @@ TCP::TCP(){}
 
 TCP::TCP(string &data){
   this->fposition = 0;
-  setField(data, ORIGIN_PORT, &fposition);
-  setField(data, DESTINATION_PORT, &fposition);
+  setField(data, ORIGIN_PORT_TCP, &fposition);
+  setField(data, DESTINATION_PORT_TCP, &fposition);
   setField(data, SEQ_NUM, &fposition);
   setField(data, ACK, &fposition);
   setField(data, HEADER_LENGTH_TCP, &fposition);
@@ -19,11 +19,11 @@ TCP::TCP(string &data){
 
 void TCP::setField(string &data, string field, int *fpos){
   string representation;
-  if(field == ORIGIN_PORT){
+  if(field == ORIGIN_PORT_TCP){
     representation = data.substr(*fpos, BYTES_2);
     *fpos += BYTES_2;
     this->originPort = binToDec(representation);
-  }else if(field == DESTINATION_PORT){
+  }else if(field == DESTINATION_PORT_TCP){
     representation = data.substr(*fpos, BYTES_2);
     *fpos += BYTES_2;
     this->destinationPort = binToDec(representation);
