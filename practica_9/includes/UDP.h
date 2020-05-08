@@ -2,6 +2,7 @@
 #define UDP_H
 
 #include "helpers.h"
+#include "DNS.h"
 
 #define ORIGIN_PORT_UDP "origin port"
 #define DESTINATION_PORT_UDP "destination port"
@@ -19,6 +20,7 @@ private:
   string length;
   string checksum;
   string otherData;
+  void * payload;
 
 public:
   UDP();
