@@ -7,11 +7,11 @@
 
 #define ID_DNS "id dns"
 #define FLAGS_DNS "flags dns"
-// #define
-// #define
-// #define
-// #define
-// #define
+#define QD_COUNT "qd count"
+#define AN_COUNT "an count"
+#define NS_COUNT "ns count"
+#define AR_COUNT "ar count"
+#define OTHER_DATA_DNS "other data dns"
 
 using namespace std;
 
@@ -28,8 +28,15 @@ struct Flags{
 
 class DNS{
 private:
+  int fposition=0;
   unsigned int id;
   Flags flags;
+  unsigned int qdCount;
+  unsigned int anCount;
+  unsigned int nsCount;
+  unsigned int arCount;
+
+  string otherData;
 
 public:
   DNS();
