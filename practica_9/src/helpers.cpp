@@ -134,3 +134,12 @@ string readPackage(char * fileName){
 
   return datagram;
 }
+
+void printHexData(string &binary){
+  cout << "Data: \n[ ";
+  for(int i=0; i<binary.length(); i+=BYTE){
+    if(i%BYTE == 0 && i != 0) cout << "-";
+    cout << binToHex(binary.substr(i, BYTE));
+  }
+  cout << " ]" << endl;
+}

@@ -10,8 +10,9 @@ QueryDNS::QueryDNS(string &data){
 }
 
 void QueryDNS::setField(string &data, string field, int *fpos){
+  string representation;
   if(field == DOMAIN_NAME){
-    this->getDomain(data, fpos);
+    domainName = this->getDomain(data, fpos);
   }else if(field == TYPE_QUERY){
     representation = data.substr(*fpos, BYTES_2);
     *fpos += BYTES_2;
@@ -41,18 +42,19 @@ string QueryDNS::getDomain(string &binary, int * fpos){
   bfrsize = size / BYTE;
   bytesbfr = new unsigned char[bfrsize];
 
-  for(int k = i = 0; i<size; i+=BYTE, ++k)
-    bytesbfr[k] = binToDec(data.substr(i, BYTE));
+  for(int k=0, i=0; i<size; i+=BYTE, ++k)
+    bytesbfr[k] = binToDec(binary.substr(i, BYTE));
+  
 
   int bytes = 0;
   while(bytesbfr[bytes] != 0 &&  bytes < bfrsize){
+
     if(bytes > 0) name += ".";
     len = bytesbfr[bytes++];
     while(len-- && bytes < bfrsize)
       name += bytesbfr[bytes++];
   }
+  *fpos += (++bytes*BYTE);
 
-  *fpos += (bytes*BYTE);
-  // debug(name);
   return name;
 }

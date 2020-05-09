@@ -15,12 +15,14 @@ private:
   string domainName;
   int type;
   int dnsClass;
+
   string getDomain(string &binary, int *fpos);
 public:
   QueryDNS();
   QueryDNS(string &data);
+
   void setField(string &data, string field, int *fpos);
-  void showData():
+  void showData();
 };
 
 #endif

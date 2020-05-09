@@ -36,7 +36,6 @@ void UDP::setField(string &data, string field, int *fpos){
       this->payload = (void *) new DNS(representation);
     else
       this->otherData = representation;
-
   }
 
 }
@@ -54,11 +53,6 @@ void UDP::showData(){
   if((this->originPort == 53 || this->destinationPort == 53) && this->payload){
     static_cast<DNS*>(this->payload)->showData();
   }else{
-    cout << "Datos: \n [ ";
-    for(int i=0; i<this->otherData.length(); i += BYTE){
-      if(i%BYTE == 0 && i != 0) cout << "-";
-      cout << binToHex(this->otherData.substr(i, BYTE));
-    }
-    cout << " ]\n\n";
+    printHexData(this->otherData);
   }
 }

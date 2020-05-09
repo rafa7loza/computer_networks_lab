@@ -2,6 +2,7 @@
 #define DNS_H
 
 #include "helpers.h"
+#include "QueryDNS.h"
 
 #define ZERO '0'
 
@@ -22,9 +23,9 @@ struct Flags{
   bool tc;      // 1 bit
   bool rd;      // 1 bit
   bool ra;      // 1 bit
-  bool z;     // 1 bits
-  bool ad;     // 1 bits
-  bool cd;     // 1 bits
+  bool z;       // 1 bits
+  bool ad;      // 1 bits
+  bool cd;      // 1 bits
   int rCode;    // 4 bits
 };
 
@@ -37,8 +38,8 @@ private:
   unsigned int anCount;
   unsigned int nsCount;
   unsigned int arCount;
-
   string otherData;
+  void * payload;
 
 public:
   DNS();

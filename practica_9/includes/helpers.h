@@ -37,5 +37,6 @@ string getIPv6Address(string binary);
 int open_file(char * str);
 int getFileSize(int fd);
 string readPackage(char * fileName);
+void printHexData(string &binary);
 
 #endif
