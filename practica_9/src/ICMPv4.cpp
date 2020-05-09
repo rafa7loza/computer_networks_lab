@@ -49,6 +49,7 @@ void ICMPv4::initField(string field, string representation){
 void ICMPv4::showData(){
   cout << "Mensaje informativo: " << this->type << endl
     << "Código de error: " << this->errorCode << endl
-    << "Checksum: " << this->checksum << endl
-    << "Resto de la informacion: { " << this->otherFields << " }" << endl << endl;
+    << "Checksum: " << this->checksum << endl;
+    printHexData(this->otherFields);
+
 }

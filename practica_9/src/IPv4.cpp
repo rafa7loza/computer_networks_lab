@@ -171,7 +171,7 @@ void IPv4::showData(){
     else if(this->protocol == TCP_TYPE)
       static_cast<TCP*>(this->ptr)->showData();
     else if(this->protocol == UDP_TYPE)
-    static_cast<UDP*>(this->ptr)->showData();
+      static_cast<UDP*>(this->ptr)->showData();
 
 }
 
