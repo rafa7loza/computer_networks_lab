@@ -1,5 +1,5 @@
-#ifndef QUERY_DNS
-#define QUERY_DNS
+#ifndef QUERYDNS_H
+#define QUERYDNS_H
 
 #include "helpers.h"
 

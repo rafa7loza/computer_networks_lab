@@ -44,7 +44,7 @@ using namespace std;
 
 string hexToString(int num);
 string binToString(int num);
-int binToDec(string binary);
+unsigned int binToDec(string binary);
 string getIpAddress(string binary);
 string getMACAddress(string binary);
 string getIPv6Address(string binary);

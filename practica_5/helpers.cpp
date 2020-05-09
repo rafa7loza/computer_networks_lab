@@ -53,7 +53,7 @@ string binToString(int num){
 
 }
 
-int binToDec(string binary){
+unsigned int binToDec(string binary){
   int result = 0, p = 0;
 
   for(int i=binary.length()-1; i>=0; --i, ++p){

@@ -29,7 +29,7 @@ using namespace std;
 string decToHex(int num);
 string decToBin(int num);
 string binToHex(string binary);
-int binToDec(string binary);
+unsigned int binToDec(string binary);
 string getIpAddress(string binary);
 string getMACAddress(string binary);
 string getIPv6Address(string binary);
