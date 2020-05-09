@@ -3,6 +3,7 @@
 
 #include "helpers.h"
 #include "QueryDNS.h"
+#include "ResponseDNS.h"
 
 #define ZERO '0'
 

@@ -50,12 +50,11 @@ void DNS::setField(string &data, string field, int * fpos){
     this->arCount = binToDec(representation);
   }else if(field == OTHER_DATA_DNS){
     representation = data.substr(*fpos);
-    if(this->flags.qr){
-      debug("Response");
-    }else{
-      debug("Query");
+    if(this->flags.qr)
+      this->payload = (void *) new ResponseDNS(representation);
+    else
       this->payload = (void *) new QueryDNS(representation);
-    }
+
     this->otherData = representation;
   }
 }
@@ -83,7 +82,7 @@ void DNS::showData(){
     << endl;
 
     if(this->flags.qr){
-      debug("Response");
+      static_cast<ResponseDNS*>(this->payload)->showData();
     }else{
       static_cast<QueryDNS*>(this->payload)->showData();
     }
