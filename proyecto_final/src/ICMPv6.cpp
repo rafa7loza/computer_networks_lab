@@ -81,7 +81,7 @@ void ICMPv6::initField(string field, string representation){
   }else if(field == ICMPV6_CHECKSUM){
     this->checkSum = getHexadecimal(representation);
   }else if(field == ICMPV6_OTHER){
-    this->otherData = getHexadecimal(representation);
+    this->otherData = representation;
   }
 }
 
@@ -89,7 +89,8 @@ void ICMPv6::showData(){
   cout << "Mensaje informativo: " << this->type << endl
     << "Código de error: {" << this->typeError << "} " << this->error << endl
     << "Checksum: " << this->checkSum << endl
-    << "Resto de la información: " << this->otherData << endl;
+    << "Resto de la información: " << endl;
+    printHexData(this->otherData);
 }
 
 string getHexadecimal(string binary){

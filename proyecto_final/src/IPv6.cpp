@@ -132,7 +132,7 @@ void IPv6::showData(){
     << "Encabezado siguiente: " << this->nextHeader << endl
     << "Límite de salto: " << this->hopLimit << endl
     << "Dirección IP de origen: " << this->originAddress << endl
-    << "Dirección IP de destino: " << this->destinationAddress << endl;
+    << "Dirección IP de destino: " << this->destinationAddress << endl
     << endl << endl;
     if(this->nextHeader == ICMPV6)
       this->icmpv6->showData();
