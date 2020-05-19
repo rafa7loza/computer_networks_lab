@@ -2,6 +2,7 @@
 #define IPV6_H
 
 #include "helpers.h"
+#include "ICMPv6.h"
 
 #define IPV6_VERSION "version"
 #define IPV6_CLASS "traffic class"
@@ -12,6 +13,8 @@
 #define IPV6_SOURCE_ADDRESS "source address"
 #define IPV6_DESTINATION_ADDRESS "destination address"
 #define IPV6_OTHER_DATA "ipv6 other data"
+#define ICMPV6 "ICMPv6"
+
 using namespace std;
 
 struct TrafficClass{
@@ -37,6 +40,8 @@ private:
   string originAddress;
   string destinationAddress;
   string otherData;
+  ICMPv6 * icmpv6;
+
 };
 
 #endif

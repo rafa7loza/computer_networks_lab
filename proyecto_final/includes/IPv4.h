@@ -25,9 +25,9 @@
 #define PAYLOAD "payload"
 
 // Segment types
-#define ICMP_TYPE "ICMPv4"
-#define TCP_TYPE "TCP"
-#define UDP_TYPE "UDP"
+#define ICMPV4_SEG "ICMPv4"
+#define TCP_SEG "TCP"
+#define UDP_SEG "UDP"
 
 using namespace std;
 

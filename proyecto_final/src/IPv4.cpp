@@ -137,11 +137,11 @@ void IPv4::setField(string &data, string field, int * fpos){
     this->objectiveAddress = getIpAddress(representation);
   }else if(field == PAYLOAD){
     representation = data.substr(*fpos);
-    if(this->protocol == ICMP_TYPE)
+    if(this->protocol == ICMPV4_SEG)
       this->ptr = new ICMPv4(representation);
-    else if(this->protocol == TCP_TYPE)
+    else if(this->protocol == TCP_SEG)
       this->ptr = new TCP(representation);
-    else if(this->protocol == UDP_TYPE)
+    else if(this->protocol == UDP_SEG)
       this->ptr = new UDP(representation);
   }
 
@@ -166,11 +166,11 @@ void IPv4::showData(){
     << "Direccion IP de destino: " << this->objectiveAddress << endl
     << endl;
     assert(this->ptr != nullptr);
-    if(this->protocol == ICMP_TYPE)
+    if(this->protocol == ICMPV4_SEG)
       static_cast<ICMPv4*>(this->ptr)->showData();
-    else if(this->protocol == TCP_TYPE)
+    else if(this->protocol == TCP_SEG)
       static_cast<TCP*>(this->ptr)->showData();
-    else if(this->protocol == UDP_TYPE)
+    else if(this->protocol == UDP_SEG)
       static_cast<UDP*>(this->ptr)->showData();
 
 }

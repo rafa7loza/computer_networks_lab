@@ -11,7 +11,7 @@ using namespace std;
 int main(){
 
   int position = 0;
-  char fileName[] = "paquetes_redes/ipv6_icmpv6_ping.bin";
+  char fileName[] = "paquetes_redes/ipv6_icmpv6_destination_unreachable.bin";
 
   cout << "\n\tReading datagram from: " << fileName << endl << endl;
   string datagram = readPackage(fileName);

@@ -13,6 +13,8 @@ IPv6::IPv6(string &data, int * position){
   setField(data, IPV6_HOP_LIMIT, position);
   setField(data, IPV6_SOURCE_ADDRESS, position);
   setField(data, IPV6_DESTINATION_ADDRESS, position);
+  setField(data, IPV6_OTHER_DATA, position);
+
 }
 
 void IPv6::setField(string &data, string field, int * fpos){
@@ -78,7 +80,7 @@ void IPv6::setField(string &data, string field, int * fpos){
       case 51: { this->nextHeader = "AH"; break;}
       case 54: { this->nextHeader = "NARP"; break;}
       case 55: { this->nextHeader = "MOBILE"; break;}
-      case 58: { this->nextHeader = "ICMPv6"; break;}
+      case 58: { this->nextHeader = ICMPV6; break;}
       case 88: { this->nextHeader = "EIGRP"; break;}
       case 89: { this->nextHeader = "OSPF"; break;}
       case 94: { this->nextHeader = "IPIP"; break;}
@@ -110,7 +112,12 @@ void IPv6::setField(string &data, string field, int * fpos){
     *fpos += BYTES_16;
     this->destinationAddress = getIPv6Address(representation);
   }else if(field == IPV6_OTHER_DATA){
-    this->otherData = data.substr(*fpos);
+    representation = data.substr(*fpos);
+    cout << this->nextHeader << endl;
+    if(this->nextHeader == ICMPV6)
+      this->icmpv6 = new ICMPv6(representation);
+    else
+      this->otherData = representation;
   }
 }
 
@@ -125,7 +132,11 @@ void IPv6::showData(){
     << "Encabezado siguiente: " << this->nextHeader << endl
     << "Límite de salto: " << this->hopLimit << endl
     << "Dirección IP de origen: " << this->originAddress << endl
-    << "Dirección IP de destino: " << this->destinationAddress << endl
-    printHexData(this->otherData);
+    << "Dirección IP de destino: " << this->destinationAddress << endl;
+    << endl << endl;
+    if(this->nextHeader == ICMPV6)
+      this->icmpv6->showData();
+    else
+      printHexData(this->otherData);
     cout << endl;
 }
