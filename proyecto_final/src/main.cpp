@@ -9,10 +9,17 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char * argv[]){
 
   int position = 0;
-  char fileName[] = "paquetes_redes/ethernet_arp_reply.bin";
+
+  if(argc < 1){
+    cout << "No se ha especificado el archivo con el que desea trabajar." << endl;
+    return 1;
+  }
+
+  char * fileName = argv[1];
+  // char fileName[] = "paquetes_redes/ethernet_arp_reply.bin";
 
   cout << "\n\tReading datagram from: " << fileName << endl << endl;
   string datagram = readPackage(fileName);
