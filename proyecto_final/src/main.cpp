@@ -5,13 +5,14 @@
 #include "Header.h"
 #include "IPv4.h"
 #include "IPv6.h"
+#include "arp_rarp.h"
 
 using namespace std;
 
 int main(){
 
   int position = 0;
-  char fileName[] = "paquetes_redes/ipv6_icmpv6_destination_unreachable.bin";
+  char fileName[] = "paquetes_redes/ethernet_arp_reply.bin";
 
   cout << "\n\tReading datagram from: " << fileName << endl << endl;
   string datagram = readPackage(fileName);
@@ -25,6 +26,9 @@ int main(){
   }else if(header.getType() == IPV6_CODE){
     IPv6 ipv6 = IPv6(datagram, &position);
     ipv6.showData();
+  }else if(header.getType() == RARP_CODE || header.getType() == ARP_CODE){
+    ARP_RARP arp_rarp = ARP_RARP(datagram, &position);
+    arp_rarp.showData();
   }
 
   cout<<endl;
